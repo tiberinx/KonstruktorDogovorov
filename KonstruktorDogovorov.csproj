@@ -7,14 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Word.dll">
-      <Guid>00020905-0000-0000-c000-000000000046</Guid>
-      <VersionMajor>8</VersionMajor>
-      <VersionMinor>7</VersionMinor>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-    </COMReference>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.10.1" />
+    <PackageReference Include="DocumentFormat.OpenXml.DotNet.Core" Version="1.0.1" />
+    <PackageReference Include="DocumentFormat.OpenXml.VariableReplacer" Version="0.1.0" />
+    <PackageReference Include="OpenXMLTemplates" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
