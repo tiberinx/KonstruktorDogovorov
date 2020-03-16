@@ -30,8 +30,8 @@ namespace KonstruktorDogovorov
         {
             string CustomValue = "такие дела";
             Word.Application app = new Word.Application();
-            Word.Document doc = app.Documents.Add(filepath);
-            doc.Variables["var_name"].Value = CustomValue;
+            Word.Document doc = app.Documents.Add(@"C:\Users\tiberinx.DESKTOP-7QBI1PE\source\repos\KonstruktorDogovorov\input.docx");
+            doc.Variables["DogovorNumber"].Value = CustomValue;
             doc.Fields.Update();
             doc.Save();
             doc.Close();
