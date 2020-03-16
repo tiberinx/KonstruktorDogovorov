@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonstruktorDogovorov", "KonstruktorDogovorov.csproj", "{46E8A23D-1F29-471F-AE64-5320E3636C4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46E8A23D-1F29-471F-AE64-5320E3636C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46E8A23D-1F29-471F-AE64-5320E3636C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46E8A23D-1F29-471F-AE64-5320E3636C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46E8A23D-1F29-471F-AE64-5320E3636C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC6E3473-EF85-46D8-AB26-796E743F71D1}
+	EndGlobalSection
+EndGlobal
