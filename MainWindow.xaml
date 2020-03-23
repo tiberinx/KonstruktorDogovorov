@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="313,271,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Margin="103,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.IsRequiredForForm="True" Text="Номер договора"/>
 
     </Grid>
 </Window>
