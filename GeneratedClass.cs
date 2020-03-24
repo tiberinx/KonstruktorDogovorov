@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Packaging;
+﻿using Syska = System.Windows;
+using DocumentFormat.OpenXml.Packaging;
 using Ap = DocumentFormat.OpenXml.ExtendedProperties;
 using Vt = DocumentFormat.OpenXml.VariantTypes;
 using DocumentFormat.OpenXml;
@@ -12,8 +13,9 @@ using A = DocumentFormat.OpenXml.Drawing;
 
 namespace KonstruktorDogovorov
 {
-    public class GeneratedClass
+    public class GeneratedClass:MainWindow
     {
+        
         // Creates a WordprocessingDocument.
         public void CreatePackage(string filePath)
         {
@@ -260,8 +262,8 @@ namespace KonstruktorDogovorov
             runProperties3.Append(fontSizeComplexScript4);
             runProperties3.Append(underline4);
             Text text3 = new Text();
-            MainWindow MainWindow = new MainWindow();
-            text3.Text = MainWindow.textbox1.Text;
+            MainWindow mw = (MainWindow)Syska.Application.Current.MainWindow;
+            text3.Text = mw.textbox1.Text;
 
             run3.Append(runProperties3);
             run3.Append(text3);
