@@ -71,7 +71,7 @@ namespace KonstruktorDogovorov
         }
 
         // Generates content of extendedFilePropertiesPart1.
-        private void GenerateExtendedFilePropertiesPart1Content(ExtendedFilePropertiesPart extendedFilePropertiesPart1)
+        private static void GenerateExtendedFilePropertiesPart1Content(ExtendedFilePropertiesPart extendedFilePropertiesPart1)
         {
             Ap.Properties properties1 = new Ap.Properties();
             properties1.AddNamespaceDeclaration("vt", "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes");
@@ -162,7 +162,7 @@ namespace KonstruktorDogovorov
         }
 
         // Generates content of mainDocumentPart1.
-        private void GenerateMainDocumentPart1Content(MainDocumentPart mainDocumentPart1)
+        private static void GenerateMainDocumentPart1Content(MainDocumentPart mainDocumentPart1)
         {
             Document document1 = new Document() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 w15 w16se wp14" } };
             document1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
@@ -263,7 +263,7 @@ namespace KonstruktorDogovorov
             runProperties3.Append(underline4);
             Text text3 = new Text();
             MainWindow mw = (MainWindow)Syska.Application.Current.MainWindow;
-            text3.Text = mw.textbox1.Text;
+            text3.Text = mw.DogovorNumber;
 
             run3.Append(runProperties3);
             run3.Append(text3);
@@ -355,33 +355,18 @@ namespace KonstruktorDogovorov
             runProperties7.Append(fontSize9);
             runProperties7.Append(fontSizeComplexScript9);
             Text text7 = new Text();
-            text7.Text = "Пер2";
+            text7.Text = mw.vyvozTBO;
 
             run7.Append(runProperties7);
             run7.Append(text7);
 
-            Run run8 = new Run() { RsidRunProperties = "00881218" };
-
-            RunProperties runProperties8 = new RunProperties();
-            RunStyle runStyle10 = new RunStyle() { Val = "FontStyle11" };
-            FontSize fontSize10 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript10 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties8.Append(runStyle10);
-            runProperties8.Append(fontSize10);
-            runProperties8.Append(fontSizeComplexScript10);
-            Text text8 = new Text();
-            text8.Text = "твердых бытовых отходов";
-
-            run8.Append(runProperties8);
-            run8.Append(text8);
 
             paragraph2.Append(paragraphProperties2);
             paragraph2.Append(run4);
             paragraph2.Append(run5);
             paragraph2.Append(run6);
             paragraph2.Append(run7);
-            paragraph2.Append(run8);
+
 
             Paragraph paragraph3 = new Paragraph() { RsidParagraphMarkRevision = "005A7C78", RsidParagraphAddition = "00DB33C0", RsidParagraphProperties = "00952515", RsidRunAdditionDefault = "00C930F2" };
 
@@ -417,7 +402,10 @@ namespace KonstruktorDogovorov
             runProperties9.Append(fontSize12);
             runProperties9.Append(fontSizeComplexScript12);
             Text text9 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text9.Text = "и ";
+            if ((mw.chkboxTBO.IsChecked == true) && (mw.chkboxKGM.IsChecked == true)) {
+                text9.Text = "и ";
+            }
+            
 
             run9.Append(runProperties9);
             run9.Append(text9);
@@ -433,26 +421,12 @@ namespace KonstruktorDogovorov
             runProperties10.Append(fontSize13);
             runProperties10.Append(fontSizeComplexScript13);
             Text text10 = new Text();
-            text10.Text = "Пер3";
+            text10.Text = mw.vyvozKGM;
 
             run10.Append(runProperties10);
             run10.Append(text10);
 
-            Run run11 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "0088451C" };
 
-            RunProperties runProperties11 = new RunProperties();
-            RunStyle runStyle14 = new RunStyle() { Val = "FontStyle11" };
-            FontSize fontSize14 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript14 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties11.Append(runStyle14);
-            runProperties11.Append(fontSize14);
-            runProperties11.Append(fontSizeComplexScript14);
-            Text text11 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text11.Text = "крупногабаритного ";
-
-            run11.Append(runProperties11);
-            run11.Append(text11);
 
             Run run12 = new Run() { RsidRunProperties = "00881218" };
 
@@ -465,7 +439,7 @@ namespace KonstruktorDogovorov
             runProperties12.Append(fontSize15);
             runProperties12.Append(fontSizeComplexScript15);
             Text text12 = new Text();
-            text12.Text = "мусора";
+            text12.Text = "";
 
             run12.Append(runProperties12);
             run12.Append(text12);
@@ -473,7 +447,6 @@ namespace KonstruktorDogovorov
             paragraph3.Append(paragraphProperties3);
             paragraph3.Append(run9);
             paragraph3.Append(run10);
-            paragraph3.Append(run11);
             paragraph3.Append(run12);
 
             Paragraph paragraph4 = new Paragraph() { RsidParagraphMarkRevision = "005A7C78", RsidParagraphAddition = "00DB33C0", RsidParagraphProperties = "00952515", RsidRunAdditionDefault = "00DB33C0" };
@@ -531,44 +504,12 @@ namespace KonstruktorDogovorov
             runProperties13.Append(fontSize17);
             runProperties13.Append(fontSizeComplexScript17);
             Text text13 = new Text();
-            text13.Text = "г.";
+            text13.Text = "г. Москва";
 
             run13.Append(runProperties13);
             run13.Append(text13);
 
-            Run run14 = new Run() { RsidRunProperties = "005A7C78" };
-
-            RunProperties runProperties14 = new RunProperties();
-            RunStyle runStyle18 = new RunStyle() { Val = "FontStyle12" };
-            Bold bold2 = new Bold();
-            FontSize fontSize18 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript18 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties14.Append(runStyle18);
-            runProperties14.Append(bold2);
-            runProperties14.Append(fontSize18);
-            runProperties14.Append(fontSizeComplexScript18);
-            Text text14 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text14.Text = " ";
-
-            run14.Append(runProperties14);
-            run14.Append(text14);
-
-            Run run15 = new Run() { RsidRunProperties = "005A7C78", RsidRunAddition = "0094629D" };
-
-            RunProperties runProperties15 = new RunProperties();
-            RunStyle runStyle19 = new RunStyle() { Val = "FontStyle12" };
-            FontSize fontSize19 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript19 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties15.Append(runStyle19);
-            runProperties15.Append(fontSize19);
-            runProperties15.Append(fontSizeComplexScript19);
-            Text text15 = new Text();
-            text15.Text = "Москва";
-
-            run15.Append(runProperties15);
-            run15.Append(text15);
+            
 
             Run run16 = new Run() { RsidRunProperties = "005A7C78", RsidRunAddition = "003D0C69" };
 
@@ -723,7 +664,7 @@ namespace KonstruktorDogovorov
             run24.Append(runProperties24);
             run24.Append(tabChar9);
 
-            Run run25 = new Run() { RsidRunProperties = "005A7C78", RsidRunAddition = "00CE441E" };
+            Run run25 = new Run() { RsidRunAddition = "00697FD1" };
 
             RunProperties runProperties25 = new RunProperties();
             RunStyle runStyle29 = new RunStyle() { Val = "FontStyle11" };
@@ -735,13 +676,12 @@ namespace KonstruktorDogovorov
             runProperties25.Append(bold12);
             runProperties25.Append(fontSize29);
             runProperties25.Append(fontSizeComplexScript29);
-            Text text16 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text16.Text = "   ";
+            TabChar tabChar9_1 = new TabChar();
 
             run25.Append(runProperties25);
-            run25.Append(text16);
+            run25.Append(tabChar9_1);
 
-            Run run26 = new Run() { RsidRunAddition = "00881218" };
+            Run run26 = new Run() { RsidRunAddition = "00697FD1" };
 
             RunProperties runProperties26 = new RunProperties();
             RunStyle runStyle30 = new RunStyle() { Val = "FontStyle11" };
@@ -753,173 +693,10 @@ namespace KonstruktorDogovorov
             runProperties26.Append(bold13);
             runProperties26.Append(fontSize30);
             runProperties26.Append(fontSizeComplexScript30);
-            Text text17 = new Text();
-            text17.Text = "Пер4";
+            TabChar tabChar9_2 = new TabChar();
 
             run26.Append(runProperties26);
-            run26.Append(text17);
-
-            Run run27 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00952515" };
-
-            RunProperties runProperties27 = new RunProperties();
-            RunStyle runStyle31 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold14 = new Bold() { Val = false };
-            FontSize fontSize31 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript31 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties27.Append(runStyle31);
-            runProperties27.Append(bold14);
-            runProperties27.Append(fontSize31);
-            runProperties27.Append(fontSizeComplexScript31);
-            Text text18 = new Text();
-            text18.Text = "«";
-
-            run27.Append(runProperties27);
-            run27.Append(text18);
-
-            Run run28 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00852A7E" };
-
-            RunProperties runProperties28 = new RunProperties();
-            RunStyle runStyle32 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold15 = new Bold() { Val = false };
-            FontSize fontSize32 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript32 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties28.Append(runStyle32);
-            runProperties28.Append(bold15);
-            runProperties28.Append(fontSize32);
-            runProperties28.Append(fontSizeComplexScript32);
-            Text text19 = new Text();
-            text19.Text = "___";
-
-            run28.Append(runProperties28);
-            run28.Append(text19);
-
-            Run run29 = new Run() { RsidRunProperties = "00881218" };
-
-            RunProperties runProperties29 = new RunProperties();
-            RunStyle runStyle33 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold16 = new Bold() { Val = false };
-            FontSize fontSize33 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript33 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties29.Append(runStyle33);
-            runProperties29.Append(bold16);
-            runProperties29.Append(fontSize33);
-            runProperties29.Append(fontSizeComplexScript33);
-            Text text20 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text20.Text = "» ";
-
-            run29.Append(runProperties29);
-            run29.Append(text20);
-
-            Run run30 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00852A7E" };
-
-            RunProperties runProperties30 = new RunProperties();
-            RunStyle runStyle34 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold17 = new Bold() { Val = false };
-            FontSize fontSize34 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript34 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties30.Append(runStyle34);
-            runProperties30.Append(bold17);
-            runProperties30.Append(fontSize34);
-            runProperties30.Append(fontSizeComplexScript34);
-            Text text21 = new Text();
-            text21.Text = "____";
-
-            run30.Append(runProperties30);
-            run30.Append(text21);
-
-            Run run31 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00CE441E" };
-
-            RunProperties runProperties31 = new RunProperties();
-            RunStyle runStyle35 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold18 = new Bold() { Val = false };
-            FontSize fontSize35 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript35 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties31.Append(runStyle35);
-            runProperties31.Append(bold18);
-            runProperties31.Append(fontSize35);
-            runProperties31.Append(fontSizeComplexScript35);
-            Text text22 = new Text();
-            text22.Text = "______";
-
-            run31.Append(runProperties31);
-            run31.Append(text22);
-
-            Run run32 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00852A7E" };
-
-            RunProperties runProperties32 = new RunProperties();
-            RunStyle runStyle36 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold19 = new Bold() { Val = false };
-            FontSize fontSize36 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript36 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties32.Append(runStyle36);
-            runProperties32.Append(bold19);
-            runProperties32.Append(fontSize36);
-            runProperties32.Append(fontSizeComplexScript36);
-            Text text23 = new Text();
-            text23.Text = "__";
-
-            run32.Append(runProperties32);
-            run32.Append(text23);
-
-            Run run33 = new Run() { RsidRunProperties = "00881218" };
-
-            RunProperties runProperties33 = new RunProperties();
-            RunStyle runStyle37 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold20 = new Bold() { Val = false };
-            FontSize fontSize37 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript37 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties33.Append(runStyle37);
-            runProperties33.Append(bold20);
-            runProperties33.Append(fontSize37);
-            runProperties33.Append(fontSizeComplexScript37);
-            Text text24 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text24.Text = " 20";
-
-            run33.Append(runProperties33);
-            run33.Append(text24);
-
-            Run run34 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "001615F8" };
-
-            RunProperties runProperties34 = new RunProperties();
-            RunStyle runStyle38 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold21 = new Bold() { Val = false };
-            FontSize fontSize38 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript38 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties34.Append(runStyle38);
-            runProperties34.Append(bold21);
-            runProperties34.Append(fontSize38);
-            runProperties34.Append(fontSizeComplexScript38);
-            Text text25 = new Text();
-            text25.Text = "1";
-
-            run34.Append(runProperties34);
-            run34.Append(text25);
-
-            Run run35 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00520F6A" };
-
-            RunProperties runProperties35 = new RunProperties();
-            RunStyle runStyle39 = new RunStyle() { Val = "FontStyle11" };
-            Bold bold22 = new Bold() { Val = false };
-            FontSize fontSize39 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript39 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties35.Append(runStyle39);
-            runProperties35.Append(bold22);
-            runProperties35.Append(fontSize39);
-            runProperties35.Append(fontSizeComplexScript39);
-            Text text26 = new Text();
-            text26.Text = "_";
-
-            run35.Append(runProperties35);
-            run35.Append(text26);
+            run26.Append(tabChar9_2);
 
             Run run36 = new Run() { RsidRunProperties = "00881218" };
 
@@ -934,15 +711,13 @@ namespace KonstruktorDogovorov
             runProperties36.Append(fontSize40);
             runProperties36.Append(fontSizeComplexScript40);
             Text text27 = new Text();
-            text27.Text = "г.";
+            text27.Text = mw.DogovorDate;
 
             run36.Append(runProperties36);
             run36.Append(text27);
 
             paragraph5.Append(paragraphProperties5);
             paragraph5.Append(run13);
-            paragraph5.Append(run14);
-            paragraph5.Append(run15);
             paragraph5.Append(run16);
             paragraph5.Append(run17);
             paragraph5.Append(run18);
@@ -954,15 +729,6 @@ namespace KonstruktorDogovorov
             paragraph5.Append(run24);
             paragraph5.Append(run25);
             paragraph5.Append(run26);
-            paragraph5.Append(run27);
-            paragraph5.Append(run28);
-            paragraph5.Append(run29);
-            paragraph5.Append(run30);
-            paragraph5.Append(run31);
-            paragraph5.Append(run32);
-            paragraph5.Append(run33);
-            paragraph5.Append(run34);
-            paragraph5.Append(run35);
             paragraph5.Append(run36);
 
             Paragraph paragraph6 = new Paragraph() { RsidParagraphMarkRevision = "005A7C78", RsidParagraphAddition = "00DB33C0", RsidParagraphProperties = "00952515", RsidRunAdditionDefault = "00DB33C0" };
@@ -1016,7 +782,8 @@ namespace KonstruktorDogovorov
             runProperties37.Append(fontSize42);
             runProperties37.Append(fontSizeComplexScript42);
             Text text28 = new Text();
-            text28.Text = "Пер5";
+            text28.Text = mw.OrgType + " " + mw.CustomerName + ",";
+            if (mw.OrgType == "Индивидуальный предприниматель") { text28.Text = mw.OrgType + " " + mw.CustomerName + ","; } else { text28.Text = mw.OrgType + " «" + mw.CustomerName + "»,"; }
 
             run37.Append(runProperties37);
             run37.Append(text28);
@@ -1031,8 +798,8 @@ namespace KonstruktorDogovorov
             runProperties38.Append(runStyle43);
             runProperties38.Append(fontSize43);
             runProperties38.Append(fontSizeComplexScript43);
-            Text text29 = new Text();
-            text29.Text = "________________________________________________";
+            Text text29 = null; //свободная касса
+            
 
             run38.Append(runProperties38);
             run38.Append(text29);
@@ -1048,7 +815,7 @@ namespace KonstruktorDogovorov
             runProperties39.Append(fontSize44);
             runProperties39.Append(fontSizeComplexScript44);
             Text text30 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text30.Text = ", ";
+            text30.Text = null; //свободная касса
 
             run39.Append(runProperties39);
             run39.Append(text30);
@@ -1064,8 +831,9 @@ namespace KonstruktorDogovorov
             runProperties40.Append(fontSize45);
             runProperties40.Append(fontSizeComplexScript45);
             Text text31 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text31.Text = "именуемое в дальнейшем ";
-
+            
+            if (mw.OrgType == "Индивидуальный предприниматель") { text31.Text = " именуемый в дальнейшем "; } else { text31.Text = " именуемое в дальнейшем "; }
+            
             run40.Append(runProperties40);
             run40.Append(text31);
 
@@ -1096,7 +864,7 @@ namespace KonstruktorDogovorov
             runProperties42.Append(fontSize47);
             runProperties42.Append(fontSizeComplexScript47);
             Text text33 = new Text();
-            text33.Text = "Заказчик";
+            text33.Text = "«Заказчик», ";
 
             run42.Append(runProperties42);
             run42.Append(text33);
@@ -1112,7 +880,7 @@ namespace KonstruktorDogovorov
             runProperties43.Append(fontSize48);
             runProperties43.Append(fontSizeComplexScript48);
             Text text34 = new Text() { Space = SpaceProcessingModeValues.Preserve };
-            text34.Text = "», ";
+            text34.Text = null; //свободная касса
 
             run43.Append(runProperties43);
             run43.Append(text34);
@@ -1133,21 +901,7 @@ namespace KonstruktorDogovorov
             run44.Append(runProperties44);
             run44.Append(text35);
 
-            Run run45 = new Run();
 
-            RunProperties runProperties45 = new RunProperties();
-            RunStyle runStyle50 = new RunStyle() { Val = "FontStyle12" };
-            FontSize fontSize50 = new FontSize() { Val = "24" };
-            FontSizeComplexScript fontSizeComplexScript50 = new FontSizeComplexScript() { Val = "24" };
-
-            runProperties45.Append(runStyle50);
-            runProperties45.Append(fontSize50);
-            runProperties45.Append(fontSizeComplexScript50);
-            Text text36 = new Text();
-            text36.Text = "Пер6";
-
-            run45.Append(runProperties45);
-            run45.Append(text36);
 
             Run run46 = new Run() { RsidRunProperties = "00881218", RsidRunAddition = "00852A7E" };
 
@@ -1270,7 +1024,7 @@ namespace KonstruktorDogovorov
             paragraph7.Append(run42);
             paragraph7.Append(run43);
             paragraph7.Append(run44);
-            paragraph7.Append(run45);
+
             paragraph7.Append(run46);
             paragraph7.Append(run47);
             paragraph7.Append(run48);

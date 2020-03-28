@@ -6,10 +6,40 @@
         xmlns:local="clr-namespace:KonstruktorDogovorov"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        <TextBox x:Name="textbox1" HorizontalAlignment="Left" Margin="103,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.IsRequiredForForm="True" Text="{Binding DogovorNumber, Mode = TwoWay}"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="313,271,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        
+
+        <TabControl>
+            <TabItem Header="Основное">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="textbox1" HorizontalAlignment="Left" Margin="140,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.IsRequiredForForm="True" Text="{Binding DogovorNumber, Mode = TwoWay}" />
+                    <CheckBox x:Name="chkboxTBO" Content="" HorizontalAlignment="Left" Margin="84,124,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="chkboxKGM" Content="" HorizontalAlignment="Left" Margin="84,158,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="TBOvalue" HorizontalAlignment="Left" Margin="109,124,0,0" Text="твердых бытовых отходов" TextWrapping="Wrap" VerticalAlignment="Top" />
+                    <TextBlock x:Name="KGMvalue" HorizontalAlignment="Left" Margin="109,157,0,0" Text="крупногабаритного мусора" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label Content="Номер договора" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="DatePicker1" HorizontalAlignment="Left" Margin="466,56,0,0" VerticalAlignment="Top" SelectedDateFormat="Long" Width="150"/>
+                    <Label Content="Дата договора" HorizontalAlignment="Left" Margin="365,55,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Вывоз:" HorizontalAlignment="Left" Margin="22,118,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Заказчик">
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox Name="orgList" Height="24" VerticalAlignment="Top" IsReadOnly="True" SelectedIndex="0" Margin="8,10,686,0" Padding="5,3,0,3"  ScrollViewer.VerticalScrollBarVisibility="Disabled" MinWidth="70" MinHeight="24" Panel.ZIndex="1" MaxWidth="70" MaxHeight="24" MaxDropDownHeight="359">
+                        <TextBlock x:Name="nameOOO">ООО</TextBlock>
+                        <TextBlock x:Name="nameIP">ИП</TextBlock>
+                        <TextBlock x:Name="nameAO">АО</TextBlock>
+                        <TextBlock x:Name="nameZAO">ЗАО</TextBlock>
+                        <TextBlock x:Name="PAO">ПАО</TextBlock>
+                        <TextBlock x:Name="namePhyz">Физлицо</TextBlock>
+                    </ComboBox>
+                    <TextBox x:Name="CustomerTextBox" HorizontalAlignment="Left" Margin="113,13,0,0" Text="{Binding CustomerName, Mode = TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="350"/>
+                    <TextBox x:Name="vLitse" HorizontalAlignment="Left" Margin="526,13,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" Visibility="{Binding vLitseVisibility, Mode=TwoWay}" />
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="345,390,0,0" VerticalAlignment="Top" Click="Button_Click"/>
 
     </Grid>
 </Window>

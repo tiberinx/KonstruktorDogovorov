@@ -26,29 +26,92 @@ namespace KonstruktorDogovorov
             get { return textbox1.Text; }
             set { textbox1.Text = value; }
         }
+        public string CustomerName  //Забиндиное поле к textbox
+        {
+            get { return CustomerTextBox.Text; }
+            set { CustomerTextBox.Text = value; }
+        }
+        public string vyvozTBO
+        {
+            get { if (chkboxTBO.IsChecked == true) { return TBOvalue.Text; } else { return null; } }
+        }
+        public string vyvozKGM
+        {
+            get { if (chkboxKGM.IsChecked == true) { return KGMvalue.Text; } else { return null; } }
+        }
+
+        public string DogovorDate
+        {
+            get { return DatePicker1.Text; }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
             //this.DataContext = perems;
-            
+
+        }
+        private string _orgFullText = "";
+        public string OrgType
+        {            
+            get
+            {
+                
+                switch (orgList.SelectedIndex)
+                {
+                    case 0:
+                        _orgFullText = "Общество с ограниченной ответственностью";
+                        return _orgFullText;
+                    case 1:
+                        _orgFullText = "Индивидуальный предприниматель";
+                        return _orgFullText;
+                       
+                    case 2:
+                        _orgFullText = "Акционерное общество";
+                        return _orgFullText;
+                        
+                    case 3:
+                        _orgFullText = "Закрытое акционерное общество";
+                        return _orgFullText;
+                        
+                    case 4:
+                        _orgFullText = "Публичное акционерное общество";
+                        return _orgFullText;
+                        
+                    case 5:
+                        _orgFullText = "";
+                        return _orgFullText;
+                        
+                    default:
+                        return _orgFullText;
+                        
+                }
+            }
+            set { _orgFullText = value; }
+        }
+        private Visibility _vLitseVis = Visibility.Hidden;
+       public Visibility vLitseVisibility
+        {
+            get
+            {
+                switch (orgList.SelectedIndex)
+                {
+                    case 1:
+                        return _vLitseVis = Visibility.Hidden;
+                    default:
+                        return _vLitseVis = Visibility.Visible;
+                }
+            }
+            set { _vLitseVis = value; }
         }
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = (MainWindow)Application.Current.MainWindow;
-
-            string message = mw.textbox1.Text;
-            MessageBox.Show(message);  //Проверка значения забиндиного поля в этом классе
-
-            GeneratedClass genclass = new GeneratedClass(); //экземпляр доп класса
-            genclass.CreatePackage(@"D:\Output.docx"); //упаковка класса в документ
+         
+            new GeneratedClass().CreatePackage(@"D:\Output.docx");            
         }
+
+ 
     }
 
-    public class Perems
-    {
-        
-       
-    }
 }
